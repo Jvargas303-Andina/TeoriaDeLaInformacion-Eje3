@@ -1,0 +1,7 @@
+Pasos para realizar el ejercicio
+
+1. Introducir frase desde la consola
+2. Generar una tabla en dos dimenciones X y Y
+3. Contar los caracteres --> Mostrar resultado en Y, X1.
+4. Contar las veces que se repite los caracteres --> Mostrar resultado en Y, X2
+6. Encontrar probabilidad --> Y, X3.
