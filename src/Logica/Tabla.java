@@ -32,9 +32,9 @@ public class Tabla {
      * Metodo encargado de agregar titulo a las columnas
      */
     private void addNameColumnNameInCase0(int numeroY){
-        String letras = "[Letras      ]";
-        String vecesRepetidas = "[Repetidas   ]";
-        String probabilidad = "[Probabilidad]";
+        String letras = "[ Letras ]";
+        String vecesRepetidas = "[ Repetidas ]";
+        String probabilidad = "[ Probabilidad ]";
 
         switch (numeroY) {
             case 0 -> System.out.print(letras);
@@ -56,15 +56,15 @@ public class Tabla {
         /// Logica
         switch (numeroY){
             case 0 -> {
-                respuesta = "[" + getLetter(numeroX, letras) + "           ]";
+                respuesta = "[   " + getLetter(numeroX, letras) + "    ]";
                 return respuesta;
             }
             case 1 -> {
-                respuesta = "[" + getNumber(numeroX, cantidadRetidas) + "           ]";
+                respuesta = "[     " + getNumber(numeroX, cantidadRetidas) + "     ]";
                 return respuesta;
             }
             case 2 -> {
-                respuesta = "[Valor 2      ]";
+                respuesta = "[     " + getProbability(numeroX, mapaFinal) + "     ]";
                 return respuesta;
             }
             default -> {
@@ -87,5 +87,12 @@ public class Tabla {
     private int getNumber(int numeroX, List<Integer> cantidad){
         return cantidad.get(numeroX);
     }
+
+
+    private String getProbability(int numeroX, Map<String, Object> mapaFinal) {
+        List<String> probaility = (List<String>) mapaFinal.get("probabilidad");
+        return probaility.get(numeroX);
+    }
+
 
 }

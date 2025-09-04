@@ -28,6 +28,7 @@ public class Main {
         String frase = sc.nextLine();
 
         /// Paso #2.
+        System.out.println("\n* Datos importantes: ");
         mapaValores = orden.countWords(frase);
         System.out.println("1. Cantidad: "+mapaValores.get("cantidad"));
         System.out.println("2. Cadena Original: " +mapaValores.get("cadenaOriginal"));
@@ -36,7 +37,7 @@ public class Main {
         System.out.println("5. Cadena Ordenad:  " +mapaValores.get("cadenaOrdenada"));
 
         /// Paso #4.
-        System.out.println("\nTabla:");
+        System.out.println("\n* Tabla:");
         clasePlantilla.table(mapaValores);
 
     }

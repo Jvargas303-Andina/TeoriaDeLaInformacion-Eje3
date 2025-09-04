@@ -1,5 +1,6 @@
 package Logica;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -53,6 +54,11 @@ public class OrdenDatosEntrada {
         resultadoMapa.put("cantidadFinal", cantidadFinal);
         resultadoMapa.put("diferenciaCantidades", diferenciaCantidades);
 
+        ///  5. Obtener la probabilidad
+        List<String> probailidad = getProbaility(resultadoMapa);
+
+        resultadoMapa.put("probabilidad", probailidad);
+
         return resultadoMapa;
     }
 
@@ -68,7 +74,6 @@ public class OrdenDatosEntrada {
      * Metodo encargado de contar las letras
      */
     private List<Integer> countLetters(Map<String, Integer> conteo){
-        System.out.println(conteo);
         List<Integer> cantidades = new ArrayList<>(conteo.values());
 
         cantidades.sort((a, b) -> b - a);
@@ -96,5 +101,21 @@ public class OrdenDatosEntrada {
         int cantidadInicial = (int) mapa.get("cantidad");
         return cantidadInicial - cantidadFinal;
     }
+
+    private List<String> getProbaility(Map<String, Object> mapa) {
+        List<Integer> datos = (List<Integer>) mapa.get("repetitive");
+        int cantidadNum = (Integer) mapa.get("cantidad");
+        double cantidad = cantidadNum;
+        List<String> probabilidad = new ArrayList<>();
+
+        for (int numeros : datos) {
+            double resultado = ((double) numeros) / cantidad;
+            double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
+            probabilidad.add(String.format("%.2f", valorRedondeado));
+        }
+
+        return probabilidad;
+    }
+
 
 }
