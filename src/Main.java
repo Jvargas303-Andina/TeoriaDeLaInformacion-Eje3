@@ -33,7 +33,7 @@ public class Main {
         System.out.println("1. Cantidad: "+mapaValores.get("cantidad"));
         System.out.println("2. Cadena Original: " +mapaValores.get("cadenaOriginal"));
         System.out.println("3. Cadena Final:    " +mapaValores.get("cadenaFinal"));
-        System.out.println("4. Repetividada:    " +mapaValores.get("repetitive"));
+        System.out.println("4. Frecuencia:    " +mapaValores.get("frecuencia"));
         System.out.println("5. Cadena Ordenad:  " +mapaValores.get("cadenaOrdenada"));
 
         /// Paso #4.

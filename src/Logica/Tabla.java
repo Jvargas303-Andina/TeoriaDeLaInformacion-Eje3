@@ -33,7 +33,7 @@ public class Tabla {
      */
     private void addNameColumnNameInCase0(int numeroY){
         String letras = "[ Letras ]";
-        String vecesRepetidas = "[ Repetidas ]";
+        String vecesRepetidas = "[ Frecuencia ]";
         String probabilidad = "[ Probabilidad ]";
 
         switch (numeroY) {
@@ -51,7 +51,7 @@ public class Tabla {
         String respuesta;
         numeroX = numeroX - 1;
         List<String> letras = (List<String>) mapaFinal.get("cadenaOrdenada");
-        List<Integer> cantidadRetidas = (List<Integer>) mapaFinal.get("repetitive");
+        List<Integer> cantidadRetidas = (List<Integer>) mapaFinal.get("frecuencia");
 
         /// Logica
         switch (numeroY){
@@ -60,7 +60,7 @@ public class Tabla {
                 return respuesta;
             }
             case 1 -> {
-                respuesta = "[     " + getNumber(numeroX, cantidadRetidas) + "     ]";
+                respuesta = "[      " + getFrecuency(numeroX, cantidadRetidas) + "     ]";
                 return respuesta;
             }
             case 2 -> {
@@ -82,9 +82,9 @@ public class Tabla {
     }
 
     /**
-     * Metdo encargado de optener el numero de repeticiones dependiendo de la posicion X
+     * Metdo encargado de optener el numero de frecuencia dependiendo de la posicion X
      */
-    private int getNumber(int numeroX, List<Integer> cantidad){
+    private int getFrecuency(int numeroX, List<Integer> cantidad){
         return cantidad.get(numeroX);
     }
 

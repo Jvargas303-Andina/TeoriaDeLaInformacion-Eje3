@@ -38,26 +38,26 @@ public class OrdenDatosEntrada {
         List<String> cadenaFinal = orderLetters(conteo);
 
         /// 2. Obtener cantidad de veces que se repite
-        List<Integer> repetitive = countLetters(conteo);
+        List<Integer> frecuencia = countLetters(conteo);
 
         /// 3. Orden segun la cantidad
         List<String> cadenaOrdenada = sortByCount(conteo);
 
         resultadoMapa.put("cadenaFinal", cadenaFinal);
-        resultadoMapa.put("repetitive", repetitive);
+        resultadoMapa.put("frecuencia", frecuencia);
         resultadoMapa.put("cadenaOrdenada", cadenaOrdenada);
 
         /// 4. Cuenta la cantidad final de caracteres
-        int cantidadFinal = repetitive.size();
+        int cantidadFinal = frecuencia.size();
         int diferenciaCantidades = differenceCount(resultadoMapa, cantidadFinal);
 
         resultadoMapa.put("cantidadFinal", cantidadFinal);
         resultadoMapa.put("diferenciaCantidades", diferenciaCantidades);
 
-        ///  5. Obtener la probabilidad
-        List<String> probailidad = getProbaility(resultadoMapa);
+        ///  5. Obtener la entropia
+        List<String> entropia = getEntropia(resultadoMapa);
 
-        resultadoMapa.put("probabilidad", probailidad);
+        resultadoMapa.put("entropia", entropia);
 
         return resultadoMapa;
     }
@@ -102,20 +102,36 @@ public class OrdenDatosEntrada {
         return cantidadInicial - cantidadFinal;
     }
 
-    private List<String> getProbaility(Map<String, Object> mapa) {
-        List<Integer> datos = (List<Integer>) mapa.get("repetitive");
+    private List<String> getEntropia(Map<String, Object> mapa) {
+
+        List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
         int cantidadNum = (Integer) mapa.get("cantidad");
         double cantidad = cantidadNum;
-        List<String> probabilidad = new ArrayList<>();
+        List<String> Entropia = new ArrayList<>();
 
         for (int numeros : datos) {
             double resultado = ((double) numeros) / cantidad;
             double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
-            probabilidad.add(String.format("%.2f", valorRedondeado));
+            Entropia.add(String.format("%.2f", valorRedondeado));
         }
 
-        return probabilidad;
+        return Entropia;
     }
 
-
+    /// Probabilidad EJEMPLO:
+//    private List<String> getEntropia(Map<String, Object> mapa) {
+//
+//        List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
+//        int cantidadNum = (Integer) mapa.get("cantidad");
+//        double cantidad = cantidadNum;
+//        List<String> Entropia = new ArrayList<>();
+//
+//        for (int numeros : datos) {
+//            double resultado = ((double) numeros) / cantidad;
+//            double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
+//            Entropia.add(String.format("%.2f", valorRedondeado));
+//        }
+//
+//        return Entropia;
+//    }
 }
