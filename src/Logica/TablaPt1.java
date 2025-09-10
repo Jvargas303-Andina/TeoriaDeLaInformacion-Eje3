@@ -3,7 +3,7 @@ package Logica;
 import java.util.List;
 import java.util.Map;
 
-public class Tabla {
+public class TablaPt1 {
 
     public void table(Map<String, Object> mapaFinal){
 
@@ -75,20 +75,22 @@ public class Tabla {
     }
 
     /**
-     * Metdo encargado de optener la letra dependiendo de la posicion X
+     * Metodo encargado de obtener la letra dependiendo de la posicion X
      */
     private String getLetter(int numeroX, List<String> letras){
         return letras.get(numeroX);
     }
 
     /**
-     * Metdo encargado de optener el numero de frecuencia dependiendo de la posicion X
+     * Metodo encargado de obtener el numero de frecuencia dependiendo de la posicion X
      */
     private int getFrecuency(int numeroX, List<Integer> cantidad){
         return cantidad.get(numeroX);
     }
 
-
+    /**
+     * Metodo encargado de obtener la probailidad en base al mapa
+     */
     private String getProbability(int numeroX, Map<String, Object> mapaFinal) {
         List<String> probaility = (List<String>) mapaFinal.get("probabilidad");
         return probaility.get(numeroX);

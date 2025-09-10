@@ -54,10 +54,10 @@ public class OrdenDatosEntrada {
         resultadoMapa.put("cantidadFinal", cantidadFinal);
         resultadoMapa.put("diferenciaCantidades", diferenciaCantidades);
 
-        ///  5. Obtener la entropia
-        List<String> entropia = getEntropia(resultadoMapa);
+        ///  5. Obtener la probabilidad
+        List<String> probabilidad = getProbability(resultadoMapa);
 
-        resultadoMapa.put("entropia", entropia);
+        resultadoMapa.put("probabilidad", probabilidad);
 
         return resultadoMapa;
     }
@@ -102,6 +102,30 @@ public class OrdenDatosEntrada {
         return cantidadInicial - cantidadFinal;
     }
 
+    private List<String> getProbability(Map<String, Object> mapa) {
+
+        List<String> Probailidad = new ArrayList<>();
+        List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
+
+        int cantidadNum = (Integer) mapa.get("cantidad");
+        System.out.println(">>>>" + cantidadNum);
+
+        double cantidad = cantidadNum;
+        System.out.println(">>>>" + cantidad);
+
+
+
+        for (int numeros : datos) {
+            double resultado = numeros / cantidad;
+            double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
+            Probailidad.add(String.format("%.2f", valorRedondeado));
+        }
+
+        return Probailidad;
+    }
+
+    /// back up Entropia:
+    /**
     private List<String> getEntropia(Map<String, Object> mapa) {
 
         List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
@@ -117,21 +141,5 @@ public class OrdenDatosEntrada {
 
         return Entropia;
     }
-
-    /// Probabilidad EJEMPLO:
-//    private List<String> getEntropia(Map<String, Object> mapa) {
-//
-//        List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
-//        int cantidadNum = (Integer) mapa.get("cantidad");
-//        double cantidad = cantidadNum;
-//        List<String> Entropia = new ArrayList<>();
-//
-//        for (int numeros : datos) {
-//            double resultado = ((double) numeros) / cantidad;
-//            double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
-//            Entropia.add(String.format("%.2f", valorRedondeado));
-//        }
-//
-//        return Entropia;
-//    }
+    */
 }

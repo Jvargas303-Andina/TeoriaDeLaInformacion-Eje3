@@ -1,5 +1,6 @@
 import Logica.OrdenDatosEntrada;
-import Logica.Tabla;
+import Logica.TablaPt1;
+import Logica.TablaPt2;
 
 import java.util.*;
 
@@ -12,7 +13,8 @@ public class Main {
 
         /// Instancia de clases
         Scanner sc = new Scanner(System.in);
-        Tabla clasePlantilla = new Tabla();
+        TablaPt1 TablaPt1 = new TablaPt1();
+        TablaPt2 TablaPt2 = new TablaPt2();
 
         /// Saludo
         System.out.println("""
@@ -37,8 +39,13 @@ public class Main {
         System.out.println("5. Cadena Ordenad:  " +mapaValores.get("cadenaOrdenada"));
 
         /// Paso #4.
-        System.out.println("\n* Tabla:");
-        clasePlantilla.table(mapaValores);
+        System.out.println("\n*** Tabla puntos A y B:");
+        TablaPt1.table(mapaValores);
+
+        /// Paso #5.
+        System.out.println("\n*** Tabla punto C:");
+        TablaPt2.meidliTable(mapaValores);
+
 
     }
 }
