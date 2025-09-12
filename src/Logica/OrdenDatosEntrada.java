@@ -1,6 +1,5 @@
 package Logica;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ public class OrdenDatosEntrada {
      * y de obtener una lista con cada letra
      */
     public Map<String, Object> countWords(String frase){
-
         /// Atributos
         int cantidad = frase.length();
         List<String> cadenaOriginal = new ArrayList<>();
@@ -58,9 +56,6 @@ public class OrdenDatosEntrada {
         List<String> probabilidad = getProbability(resultadoMapa);
 
         resultadoMapa.put("probabilidad", probabilidad);
-
-        /// 6. Obtener la mita de la tabla
-        getDataMiddleTable(resultadoMapa);
 
         return resultadoMapa;
     }
@@ -106,18 +101,14 @@ public class OrdenDatosEntrada {
     }
 
     private List<String> getProbability(Map<String, Object> mapa) {
-
+        /// Atributos
         List<String> Probailidad = new ArrayList<>();
         List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
 
         int cantidadNum = (Integer) mapa.get("cantidad");
-        System.out.println(">>>>" + cantidadNum);
-
         double cantidad = cantidadNum;
-        System.out.println(">>>>" + cantidad);
 
-
-
+        /// Logica
         for (int numeros : datos) {
             double resultado = numeros / cantidad;
             double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
@@ -126,88 +117,4 @@ public class OrdenDatosEntrada {
 
         return Probailidad;
     }
-
-    /**
-     * Tabla encarga de obtener los valores mas cercanos a la mitad segun la frecuencia
-     */
-    public void getDataMiddleTable(Map<String, Object> mapaFinal){
-
-        /// Atributos
-        List<Integer> listaCaracteres = (List<Integer>) mapaFinal.get("frecuencia");
-        List<Integer> listaRetorno = new ArrayList<>();
-        List<Integer> listaRetorno2 = new ArrayList<>();
-
-        int cantidad = (int) mapaFinal.get("cantidad");
-        int mitadOriginal = cantidad / 2;
-        int almacen = 0, primeraMitad = 0, segundaMitad = 0, prueba = 0;
-
-        if (cantidad % 2 == 0 ){
-            System.out.println(">> Entero");
-            mitadOriginal = mitadOriginal + 1;
-
-        }else{
-            System.out.println(">> Decimal");
-
-        }
-
-        System.out.println("--------------");
-        System.out.println(">>>" + mitadOriginal);
-
-        /// Logica
-        for (int i = 0; i < listaCaracteres.size(); i++){
-
-            listaRetorno.add(listaCaracteres.get(i));
-            almacen = almacen + listaCaracteres.get(i);
-            System.out.println(">>>" + almacen);
-            if (almacen == mitadOriginal || almacen == (mitadOriginal + 1)){
-
-                for (int j = i; j < listaCaracteres.size(); j++) {
-                    listaRetorno2.add(listaCaracteres.get(j));
-                }
-                break;
-
-            } else if (almacen == mitadOriginal){
-
-                break;
-            }
-        }
-
-
-        for (int i = 0; i < listaRetorno.size(); i++) {
-            primeraMitad = primeraMitad + listaRetorno.get(i);
-        }
-
-        segundaMitad = cantidad - primeraMitad;
-
-        System.out.println("Primera mitad: ");
-        System.out.println("- Lista: " + listaRetorno);
-        System.out.println("- Total: " + primeraMitad);
-
-        System.out.println("\nSegunda mitad: ");
-        System.out.println("- Lista: " + listaRetorno2);
-        System.out.println("- Total: " + segundaMitad);
-
-
-//        mapaFinal.put("primeraMitad", primeraMitad);
-//        mapaFinal.put("segundaMitad", segundaMitad);
-    }
-
-    /// back up Entropia:
-    /**
-    private List<String> getEntropia(Map<String, Object> mapa) {
-
-        List<Integer> datos = (List<Integer>) mapa.get("frecuencia");
-        int cantidadNum = (Integer) mapa.get("cantidad");
-        double cantidad = cantidadNum;
-        List<String> Entropia = new ArrayList<>();
-
-        for (int numeros : datos) {
-            double resultado = ((double) numeros) / cantidad;
-            double valorRedondeado = Math.round(resultado * 100.0) / 100.0;
-            Entropia.add(String.format("%.2f", valorRedondeado));
-        }
-
-        return Entropia;
-    }
-    */
 }

@@ -1,8 +1,10 @@
+import Enums.PalabrasClaves;
 import Logica.OrdenDatosEntrada;
 import Logica.TablaPt1;
-import Logica.TablaPt2;
 
 import java.util.*;
+
+import static Logica.TablaPt2.getDataMiddleTable;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,7 +16,6 @@ public class Main {
         /// Instancia de clases
         Scanner sc = new Scanner(System.in);
         TablaPt1 TablaPt1 = new TablaPt1();
-        TablaPt2 TablaPt2 = new TablaPt2();
 
         /// Saludo
         System.out.println("""
@@ -30,16 +31,21 @@ public class Main {
         String frase = sc.nextLine();
 
         /// Paso #2.
-        System.out.println("\n* Datos importantes: ");
+        System.out.println("\n*** Datos importantes ***");
         mapaValores = orden.countWords(frase);
-        System.out.println("1. Cantidad: "+mapaValores.get("cantidad"));
-        System.out.println("2. Cadena Original: " +mapaValores.get("cadenaOriginal"));
-        System.out.println("3. Cadena Final:    " +mapaValores.get("cadenaFinal"));
-        System.out.println("4. Frecuencia:    " +mapaValores.get("frecuencia"));
-        System.out.println("5. Cadena Ordenad:  " +mapaValores.get("cadenaOrdenada"));
+        System.out.println("1. Cantidad caracteres: "+mapaValores.get(PalabrasClaves.CANTIDAD));
+        System.out.println("2. Cadena Original: " +mapaValores.get(PalabrasClaves.CADENA_ORIGINAL));
+        System.out.println("3. Cadena Final:    " +mapaValores.get(PalabrasClaves.CADENA_FINAL));
+        System.out.println("4. Frecuencia:      " +mapaValores.get(PalabrasClaves.FRECUENCIA));
+        System.out.println("5. Cadena Ordenad:  " +mapaValores.get(PalabrasClaves.CADENA_ORDENADA));
 
         /// Paso #4.
+        System.out.println("\n*** Tabla puntos A y B ***");
         TablaPt1.table(mapaValores);
+
+        /// Paso #5.
+        System.out.println("\n*** Punto C ***");
+        getDataMiddleTable(mapaValores);
 
     }
 }
