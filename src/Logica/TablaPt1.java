@@ -1,5 +1,6 @@
 package Logica;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ public class TablaPt1 {
         int columnas = 3;
 
         /// Logica
+        System.out.println("\n*** Tabla puntos A y B:");
+
         for (int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
 
@@ -26,6 +29,10 @@ public class TablaPt1 {
             }
             System.out.println();
         }
+
+        OrdenDatosEntrada ordenDatosEntrada = new OrdenDatosEntrada();
+        System.out.println("\n*** Punto C:");
+        ordenDatosEntrada.getDataMiddleTable(mapaFinal);
     }
 
     /**
@@ -95,6 +102,4 @@ public class TablaPt1 {
         List<String> probaility = (List<String>) mapaFinal.get("probabilidad");
         return probaility.get(numeroX);
     }
-
-
 }

@@ -39,13 +39,7 @@ public class Main {
         System.out.println("5. Cadena Ordenad:  " +mapaValores.get("cadenaOrdenada"));
 
         /// Paso #4.
-        System.out.println("\n*** Tabla puntos A y B:");
         TablaPt1.table(mapaValores);
-
-        /// Paso #5.
-        System.out.println("\n*** Tabla punto C:");
-        TablaPt2.meidliTable(mapaValores);
-
 
     }
 }
